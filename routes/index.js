@@ -2,36 +2,36 @@ var _ = require('underscore');
 
 // TODO: This shoul be read from a database
 var heroes = [
-  { 
-    name: 'Ford Focus RS', 
-    facts: [
-      '150 cv',
-      'Disponibe en cualquier color',
-      '18.000€', 
-      ] 
-  },
   {
-    name: 'Seat Ibiza',
+    name: 'El guardian entre el centeno',
     facts: [
-      '120cv',
-      'Disponibe en cualquier color', 
-      '16.000€',
+      'J.D. Salinger',
+      '8 edicion',
+      '18€',
       ]
   },
   {
-    name: 'Fiat multiplá',
+    name: 'Don Quijote',
     facts: [
-      '300cv', 
-      'Solo en naranja butano',
-  	  '50.000€',
+      'Miguel de Cervantes',
+      '101 edicion',
+      '22€',
+      ]
+  },
+  {
+    name: 'La biblia',
+    facts: [
+      'Varios',
+      '1231212312 edicion',
+  	  '50€',
   	  ]
   },
     {
-    name: 'Derbi variant',
+    name: 'Chistes de lepe',
     facts: [
-      '3003cv', 
-      'Blanca',
-  	  '3.000€',
+      'Jaimito',
+      '0 edicion',
+  	  '1€',
   	  ]
   }
 ];
@@ -43,7 +43,7 @@ exports.index = function(req, res) {
 };
 
 exports.hero = function(req, res) {
-  var facts = _(heroes).detect(function (p) { 
+  var facts = _(heroes).detect(function (p) {
     return p.name == req.params.name;
   }).facts;
   res.json(facts);
@@ -61,9 +61,9 @@ exports.addFact = function(req, res) {
   }
   else{
   	hero.facts.push(req.body.fact);
-	console.log('Nuevo comentario en ' + hero.name + ': ' + req.body.fact); 
+	console.log('Nuevo comentario en ' + hero.name + ': ' + req.body.fact);
   }
-  
-  
+
+
   res.json({status: 'ok' });
 }
