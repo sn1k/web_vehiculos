@@ -48,6 +48,15 @@ app.post('/hero/add-fact', function(){
 app.post('/hero/add-fact',routes.addFact);
 
 
+var connectionString = "postgres://khcatfzjwfhnvo:UJOmZax-0PhR9eTUO-vNqkw1_V@ec2-54-83-202-218.compute-1.amazonaws.com:5432/d8kn5mgp9ttf6i"
+
+pg.connect(connectionString, function(err, client, done) {
+   client.query('SELECT * FROM your_table', function(err, result) {
+      done();
+      if(err) return console.error(err);
+      console.log(result.rows);
+   });
+});
 
 
 http.createServer(app).listen(app.get('port'), function(){
